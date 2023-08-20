@@ -4,6 +4,7 @@ import Accordion from "./components/Accordion/Accordion"
 import LoadMoreButton from "./components/LoadMoreButton/LoadMoreButton"
 import { getDummyData } from "./server/index"
 import AccordionSkeleton from "./components/AccordionSkeleton/AccordionSkeleton"
+import ErrorPopup from "./components/ErrorPopup/ErrorPopup"
 
 const App = () => {
   const defaultLimit = 4
@@ -12,6 +13,22 @@ const App = () => {
   const [showSkeleton, setShowSkeleton] = useState(false)
   const [internalLimit, setInternalLimit] = useState<number>(defaultLimit)
   const [disableLoadMoreButton, setDisableLoadMoreButton] = useState<boolean>(false)
+
+  const [error, setError] = useState<string | null>(null)
+
+  const handleCloseError = () => {
+    setError(null)
+  }
+
+  const renderErrorPopUpIfAny = () => {
+    if (error) {
+      return (
+        <div className="flex justify-center items-center h-screen">
+          {error && <ErrorPopup message={error} onClose={handleCloseError} />}
+        </div>
+      )
+    }
+  }
 
   // Using useCallback to prevent unnecessary re-renders of child components when the parent component re-renders.
   // Handle setting the product limit for the accordion
@@ -35,8 +52,10 @@ const App = () => {
         handleAccordionDataLimit(data) // Set the products based on the limit
         setTotalItems(data.limit) // Set the total number of items
         setTimeout(() => setShowSkeleton(false), 1000) // Hide skeleton after a delay
+        setError(null)
       } catch (error) {
         console.error("Error fetching data:", error)
+        setError("Something went wrong. Try again later")
         // Show a user-friendly error message and set up skeleton
         setProducts([])
         setShowSkeleton(true)
@@ -72,6 +91,7 @@ const App = () => {
           </div>
         </section>
       )}
+      {renderErrorPopUpIfAny()}
     </div>
   )
 }

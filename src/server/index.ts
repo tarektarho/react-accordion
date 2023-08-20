@@ -8,8 +8,6 @@ export const getDummyData = async () => {
     }
     const responseData = await response.json()
 
-    console.log("here")
-
     return responseData
   } catch (error) {
     if (error instanceof Error) {
