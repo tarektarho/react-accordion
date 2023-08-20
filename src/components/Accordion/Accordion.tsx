@@ -11,7 +11,7 @@ const Accordion: React.FC<AccordionProps> = ({ products }) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(0)
 
   return (
-    <div className="accordion-main">
+    <div data-testid="accordion" className="accordion-main">
       {/* Render actual accordion items */}
       {products.map((item, index) => (
         <AccordionItems

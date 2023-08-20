@@ -34,11 +34,11 @@ describe("getDummyData", () => {
   })
 
   test("fetches dummy data and returns data", async () => {
-    mockFetch(mockData)
+    mockFetch(mockData.products)
 
     const result = await getDummyData()
 
-    expect(result).toEqual(mockData)
+    expect(result).toEqual(mockData.products)
   })
 
   test("throws an error when response is not ok", async () => {

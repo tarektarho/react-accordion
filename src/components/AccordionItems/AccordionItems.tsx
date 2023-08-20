@@ -23,7 +23,7 @@ const AccordionItems: React.FC<AccordionItemsProps> = ({ item, isActive, setActi
 
   return (
     <div
-      data-testid="AccordionItems"
+      data-testid="Accordion-items"
       className={`accordion-items-container flex-col cursor-pointer ${
         isActive ? "bg-[#E5F7F9] hover:bg-[#E5F7F9]/80" : ""
       }`}
@@ -33,9 +33,9 @@ const AccordionItems: React.FC<AccordionItemsProps> = ({ item, isActive, setActi
       <div className="flex items-start flex-row pt-8 pl-4 pb-2">
         <div>
           {isActive ? (
-            <AiOutlineMinus size={18} /> // Render the minus icon when section is active
+            <AiOutlineMinus data-testid="minus-icon" size={18} /> // Render the minus icon when section is active
           ) : (
-            <AiOutlinePlus size={18} /> // Render the plus icon when section is inactive
+            <AiOutlinePlus data-testid="plus-icon" size={18} /> // Render the plus icon when section is inactive
           )}
         </div>
         <div className="text-16 font-semibold pl-4">{item.title}</div> {/* Display the section title */}
