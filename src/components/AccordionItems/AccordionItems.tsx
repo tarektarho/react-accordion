@@ -1,3 +1,4 @@
+import React from "react"
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai"
 import "./style.css"
 
@@ -14,26 +15,36 @@ interface AccordionItemsProps {
 }
 
 const AccordionItems: React.FC<AccordionItemsProps> = ({ item, isActive, setActiveIndex, sectionIndex }) => {
+  // Function to toggle the active section
   const toggleSection = () => {
-    const newIndex = isActive ? null : sectionIndex
-    setActiveIndex(newIndex)
+    const newIndex = isActive ? null : sectionIndex // Calculate new active index
+    setActiveIndex(newIndex) // Set the new active index using the provided setter function
   }
+
   return (
     <div
       data-testid="AccordionItems"
       className={`accordion-items-container flex-col cursor-pointer ${
         isActive ? "bg-[#E5F7F9] hover:bg-[#E5F7F9]/80" : ""
       }`}
-      onClick={toggleSection}
+      onClick={toggleSection} // Attach the toggleSection function to the click event
     >
-      <div className="flex items-start flex-row pt-[32px] pl-[16px] pb-[10px]">
-        <div>{isActive ? <AiOutlineMinus size={18} /> : <AiOutlinePlus size={18} />}</div>
-        <div className="text-[16px] font-semibold pl-[16px]">{item.title}</div>
+      {/* Title and toggle icon */}
+      <div className="flex items-start flex-row pt-8 pl-4 pb-2">
+        <div>
+          {isActive ? (
+            <AiOutlineMinus size={18} /> // Render the minus icon when section is active
+          ) : (
+            <AiOutlinePlus size={18} /> // Render the plus icon when section is inactive
+          )}
+        </div>
+        <div className="text-16 font-semibold pl-4">{item.title}</div> {/* Display the section title */}
       </div>
-      {isActive && (
-        <div data-testid="description" className="text-[16px] pl-[43px] pb-[32px]">
-          {" "}
-          {item.description}
+
+      {/* Description */}
+      {isActive && ( // Render the description only if the section is active
+        <div data-testid="description" className="text-16 pl-10 pb-8">
+          {item.description} {/* Display the section description */}
         </div>
       )}
     </div>

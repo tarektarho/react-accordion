@@ -9,60 +9,64 @@ const App = () => {
   const defaultLimit = 4
   const [products, setProducts] = useState<Product[]>([])
   const [totalItems, setTotalItems] = useState<number>(0)
-  const [showSkeleton, setshowSkeleton] = useState(false)
-  const [limit, setLimit] = useState<number>(defaultLimit)
+  const [showSkeleton, setShowSkeleton] = useState(false)
+  const [internalLimit, setInternalLimit] = useState<number>(defaultLimit)
   const [disableLoadMoreButton, setDisableLoadMoreButton] = useState<boolean>(false)
 
+  // Using useCallback to prevent unnecessary re-renders of child components when the parent component re-renders.
+  // Handle setting the product limit for the accordion
   const handleAccordionDataLimit = useCallback(
     (data: AccordionData) => {
       // Check if data.products is an array or a single object
       const productsArray = Array.isArray(data.products) ? data.products : [data.products]
       const offset = 0
-      const endIndex = offset + limit
-      setProducts(productsArray.slice(offset, endIndex)) // Another way of doing is to passthe limit as query param to the backend
+      const endIndex = offset + internalLimit
+      setProducts(productsArray.slice(offset, endIndex)) // Set the displayed products based on the limit
     },
-    [limit]
+    [internalLimit]
   )
 
-  const increaseLimit = () => {
-    if (limit === totalItems) {
-      setDisableLoadMoreButton(true)
-      return
-    }
-    setLimit(limit + 4)
-  }
-
+  // Fetch data and set up component when mounted or when limit changes
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setshowSkeleton(defaultLimit >= limit)
-        const data: AccordionData = await getDummyData()
-        handleAccordionDataLimit(data)
-        setTotalItems(data.total)
-        setInterval(() => setshowSkeleton(false), 1000)
+        setShowSkeleton(defaultLimit >= internalLimit) // Show skeleton on first load or when limit changes
+        const data: AccordionData = await getDummyData() // Fetch data from the server
+        handleAccordionDataLimit(data) // Set the products based on the limit
+        setTotalItems(data.limit) // Set the total number of items
+        setTimeout(() => setShowSkeleton(false), 1000) // Hide skeleton after a delay
       } catch (error) {
         console.error("Error fetching data:", error)
-        //show frindaly error message to the user
+        // Show a user-friendly error message and set up skeleton
         setProducts([])
-        setshowSkeleton(true)
+        setShowSkeleton(true)
       }
     }
-    fetchData()
-  }, [limit, handleAccordionDataLimit])
+    fetchData() // Call the fetchData function
+  }, [internalLimit, handleAccordionDataLimit])
+
+  // Increase the limit when the "Load More" button is clicked
+  const increaseLimit = () => {
+    if (internalLimit >= totalItems) {
+      setDisableLoadMoreButton(true) // Disable the button when all items are shown
+      return
+    }
+    setInternalLimit(totalItems) // Set internalLimit to totalItems (Show all items)
+  }
 
   return (
     <div className="h-full flex m-0 justify-center items-cente">
-      {showSkeleton || !products ? (
+      {showSkeleton || !products.length ? (
         <AccordionSkeleton />
       ) : (
         <section className="accordion-container bg-white h-screen grid place-items-center">
-          <div className="px-[40px] w-full">
-            <h1 className="font-bold text-[24px] mb-[16px]">Veelgestelde vragen</h1>
+          <div className="px-4 w-full">
+            <h1 className="font-bold text-2xl mb-4">Veelgestelde vragen</h1>
             <Accordion products={products} />
-            <div className="footer-continer flex items-center justify-between mt-[32px]">
+            <div className="footer-container flex items-center justify-between mt-8">
               <LoadMoreButton disabled={disableLoadMoreButton} onClick={increaseLimit} text="Bekijk alle vragen" />
               <span>
-                Total items: {limit} out of {totalItems}
+                Total items: {internalLimit} out of {totalItems}
               </span>
             </div>
           </div>

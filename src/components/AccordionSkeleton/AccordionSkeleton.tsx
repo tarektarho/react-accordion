@@ -12,7 +12,7 @@ const AccordionSkeleton: React.FC = () => {
 
           {/* Accordion main content */}
           <div className="accordion-main">
-            <div className="skeleton-line h-[146px]"></div>
+            <div className="skeleton-line h-[122px]"></div>
             <div className="skeleton-line"></div>
             <div className="skeleton-line"></div>
             <div className="skeleton-line"></div>

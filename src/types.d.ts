@@ -13,7 +13,7 @@ type Product = {
 }
 
 type AccordionData = {
-  limit?: number
+  limit: number
   products: Product
   skip?: number
   total: number
