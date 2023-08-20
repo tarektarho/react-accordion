@@ -1,0 +1,9 @@
+.accordion-container { 
+  width: 748px;
+}
+
+.accordion-main {
+  min-height: 356px;
+  max-height: 356px;
+  overflow: auto;
+}
