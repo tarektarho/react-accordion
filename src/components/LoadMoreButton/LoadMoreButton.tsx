@@ -22,7 +22,7 @@ const LoadMoreButton: React.FC<LoadMoreButtonProps> = ({ onClick, disabled, text
     <div>
       <button disabled={disabled} onClick={onClick} className={buttonStyles}>
         <span className="mr-[8px]">{text}</span>
-        <IoIosArrowForward />
+        <IoIosArrowForward data-testid="icon" />
       </button>
     </div>
   )
