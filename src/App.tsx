@@ -13,22 +13,7 @@ const App = () => {
   const [showSkeleton, setShowSkeleton] = useState(false)
   const [internalLimit, setInternalLimit] = useState<number>(defaultLimit)
   const [disableLoadMoreButton, setDisableLoadMoreButton] = useState<boolean>(false)
-
   const [error, setError] = useState<string | null>(null)
-
-  const handleCloseError = () => {
-    setError(null)
-  }
-
-  const renderErrorPopUpIfAny = () => {
-    if (error) {
-      return (
-        <div className="flex justify-center items-center h-screen">
-          {error && <ErrorPopup message={error} onClose={handleCloseError} />}
-        </div>
-      )
-    }
-  }
 
   // Using useCallback to prevent unnecessary re-renders of child components when the parent component re-renders.
   // Handle setting the product limit for the accordion
@@ -51,10 +36,11 @@ const App = () => {
         const data: AccordionData = await getDummyData() // Fetch data from the server
         handleAccordionDataLimit(data) // Set the products based on the limit
         setTotalItems(data.limit) // Set the total number of items
-        setTimeout(() => setShowSkeleton(false), 1000) // Hide skeleton after a delay
+        setTimeout(() => setShowSkeleton(false), 1000) // Hide skeleton after a delay to keep consistency.
+        //setShowSkeleton(false)
         setError(null)
       } catch (error) {
-        console.error("Error fetching data:", error)
+        console.error("Error fetching data:", error) // log to Sentry
         setError("Something went wrong. Try again later")
         // Show a user-friendly error message and set up skeleton
         setProducts([])
@@ -71,6 +57,21 @@ const App = () => {
       return
     }
     setInternalLimit(totalItems) // Set internalLimit to totalItems (Show all items)
+  }
+
+  const handleCloseError = () => {
+    setError(null)
+    window.location.href = "/"
+  }
+
+  const renderErrorPopUpIfAny = () => {
+    if (error) {
+      return (
+        <div data-testid="error-popup" className="flex justify-center items-center h-screen">
+          {error && <ErrorPopup message={error} onClose={handleCloseError} />}
+        </div>
+      )
+    }
   }
 
   return (
