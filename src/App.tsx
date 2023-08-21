@@ -83,7 +83,7 @@ const App = () => {
           <div className="px-4 w-full">
             <h1 className="font-bold text-2xl mb-4">Veelgestelde vragen</h1>
             <Accordion products={products} />
-            <div className="footer-container flex items-center justify-between mt-8">
+            <div className="footer-container flex flex-col md:flex-row items-center justify-between mt-8">
               <LoadMoreButton disabled={disableLoadMoreButton} onClick={increaseLimit} text="Bekijk alle vragen" />
               <span>
                 Total items: {internalLimit} out of {totalItems}

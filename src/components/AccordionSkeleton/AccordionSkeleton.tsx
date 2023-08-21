@@ -19,7 +19,10 @@ const AccordionSkeleton: React.FC = () => {
           </div>
 
           {/* Footer */}
-          <div data-testid="footer-container" className="footer-continer flex items-center justify-between mt-[32px]">
+          <div
+            data-testid="footer-container"
+            className="footer-container flex flex-col md:flex-row items-center justify-between mt-8"
+          >
             <div className="skeleton-line w-[214px]"></div>
             <div className="skeleton-line w-[200px]"></div>
           </div>
