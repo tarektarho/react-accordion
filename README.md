@@ -86,6 +86,10 @@ Contributions to this project are welcome! To contribute, please follow these st
 4. Push your changes to your fork.
 5. Submit a pull request to the `main` branch of this repository.
 
+## Todos
+
+- [ ] Convert it into a library
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
