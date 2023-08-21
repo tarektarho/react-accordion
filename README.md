@@ -33,7 +33,7 @@ The Accordion Vite App is a simple and responsive application that demonstrates 
 2. Navigate to the project directory:
 
    ```bash
-   cd accordion-vite
+   cd react-accordion
    ```
 
 3. Install the project dependencies:
