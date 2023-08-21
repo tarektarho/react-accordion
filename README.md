@@ -1,10 +1,12 @@
+![Codecov branch](https://img.shields.io/codecov/c/github/tarektarho/react-accordion/main)
+
 # Accordion Vite App
 
 An interactive accordion app built using React and Vite.
 
 ### Demo: https://tarek-accordion.netlify.app/
-<img width="987" alt="Screenshot 2023-08-21 at 15 54 03" src="https://user-images.githubusercontent.com/18512695/262044897-6ed2711b-0edf-409c-b1f3-23dc79492795.png">
 
+<img width="987" alt="Screenshot 2023-08-21 at 15 54 03" src="https://user-images.githubusercontent.com/18512695/262044897-6ed2711b-0edf-409c-b1f3-23dc79492795.png">
 
 ## Table of Contents
 
@@ -61,8 +63,8 @@ The following scripts are available:
 - `test`: Run unit tests.
 - `coverage`: Run tests and generate test coverage report.
 
-
 ## Test Coverage
+
 <img width="649" alt="Screenshot 2023-08-21 at 10 46 31" src="https://user-images.githubusercontent.com/18512695/262044674-43810c46-f6d4-4851-aa0d-23770ef2ca8f.png">
 
 ## Dependencies
