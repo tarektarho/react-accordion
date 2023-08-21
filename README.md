@@ -1,6 +1,6 @@
 [![Build and Test](https://github.com/tarektarho/react-accordion/actions/workflows/main.yml/badge.svg)](https://github.com/tarektarho/react-accordion/actions/workflows/main.yml)
 
-# Accordion Vite App
+# Accordion UI Component
 
 An interactive accordion app built using React and Vite.
 
