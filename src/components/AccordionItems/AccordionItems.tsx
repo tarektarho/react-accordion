@@ -27,6 +27,8 @@ const AccordionItems: React.FC<AccordionItemsProps> = ({ item, isActive, setActi
       className={`accordion-items-container flex-col cursor-pointer ${
         isActive ? "bg-[#E5F7F9] hover:bg-[#E5F7F9]/80" : ""
       }`}
+      role="region"
+      aria-expanded={isActive}
       onClick={toggleSection} // Attach the toggleSection function to the click event
     >
       {/* Title and toggle icon */}

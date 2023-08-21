@@ -79,16 +79,24 @@ const App = () => {
       {showSkeleton || !products.length ? (
         <AccordionSkeleton />
       ) : (
-        <section className="accordion-container bg-white h-screen grid place-items-center">
+        <section
+          className="accordion-container bg-white h-screen grid place-items-center"
+          role="region"
+          aria-label="Frequently Asked Questions"
+        >
           <div className="px-4 w-full">
             <h1 className="font-bold text-2xl mb-4">Veelgestelde vragen</h1>
             <Accordion products={products} />
-            <div className="footer-container flex flex-col md:flex-row items-center justify-between mt-8">
+            <footer
+              className="footer-container flex flex-col md:flex-row items-center justify-between mt-8"
+              role="contentinfo"
+              aria-label="Pagination and Total Items"
+            >
               <LoadMoreButton disabled={disableLoadMoreButton} onClick={increaseLimit} text="Bekijk alle vragen" />
               <span>
                 Total items: {internalLimit} out of {totalItems}
               </span>
-            </div>
+            </footer>
           </div>
         </section>
       )}
