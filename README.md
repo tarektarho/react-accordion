@@ -11,7 +11,6 @@ An interactive accordion app built using React and Vite.
 - [Usage](#usage)
 - [Scripts](#scripts)
 - [Dependencies](#dependencies)
-- [Dev Dependencies](#dev-dependencies)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -68,30 +67,6 @@ The app uses the following main dependencies:
 - React DOM (^18.2.0)
 - React Icons (^4.10.1)
 - Vitest Fetch Mock (^0.2.2)
-
-## Dev Dependencies
-
-The app uses the following dev dependencies for development and testing:
-
-- @testing-library/jest-dom (^6.0.1)
-- @testing-library/react (^14.0.0)
-- @types/react (^18.2.20)
-- @types/react-dom (^18.2.7)
-- @typescript-eslint/eslint-plugin (^6.0.0)
-- @typescript-eslint/parser (^6.0.0)
-- @vitejs/plugin-react-swc (^3.3.2)
-- @vitest/coverage-v8 (^0.34.2)
-- Autoprefixer (^10.4.15)
-- ESLint (^8.45.0)
-- ESLint Plugin React Hooks (^4.6.0)
-- ESLint Plugin React Refresh (^0.4.3)
-- JSDOM (^22.1.0)
-- PostCSS (^8.4.28)
-- PostCSS Import (^15.1.0)
-- Tailwind CSS (^3.3.3)
-- TypeScript (^5.1.6)
-- Vite (^4.4.5)
-- Vitest (^0.34.2)
 
 ## Contributing
 
