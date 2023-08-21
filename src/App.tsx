@@ -52,10 +52,7 @@ const App = () => {
 
   // Increase the limit when the "Load More" button is clicked
   const increaseLimit = () => {
-    if (internalLimit >= totalItems) {
-      setDisableLoadMoreButton(true) // Disable the button when all items are shown
-      return
-    }
+    setDisableLoadMoreButton(true) // Disable the button when all items are shown
     setInternalLimit(totalItems) // Set internalLimit to totalItems (Show all items)
   }
 
