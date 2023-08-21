@@ -1,4 +1,4 @@
-[![Build and Test](https://github.com/tarektarho/react-accordion/actions/workflows/main.yml/badge.svg)](https://github.com/tarektarho/react-accordion/actions/workflows/main.yml)
+[![Build and Test](https://github.com/tarektarho/react-accordion/actions/workflows/main.yml/badge.svg)](https://github.com/tarektarho/react-accordion/actions/workflows/main.yml) [![codecov](https://codecov.io/gh/tarektarho/react-accordion/graph/badge.svg?token=4JKEQSOPMY)](https://codecov.io/gh/tarektarho/react-accordion)
 
 # Accordion UI Component
 
