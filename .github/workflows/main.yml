@@ -3,7 +3,7 @@ name: Build and Test
 on: [push]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,8 +21,15 @@ jobs:
       - name: npm build
         run: npm run build
 
-  test:
+      - name: Run tests and calculate coverage
+        run: npm run test -- --coverage
+
+  generate-badge:
     runs-on: ubuntu-latest
+    needs: build-and-test
+
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - name: Checkout code
@@ -36,19 +43,18 @@ jobs:
       - name: npm install
         run: npm ci
 
-      - name: Run tests and generate coverage report
-        run: npm run test
-
-      - name: Generate Coverage Badge
+      - name: Generate Codecov badge
         run: |
-          COVERAGE_BADGE_URL="https://codecov.io/gh/tarektarho/react-accordion/main/graph/badge.svg"
-          BADGE_MARKDOWN="[![Test Coverage]($COVERAGE_BADGE_URL)](https://codecov.io/gh/tarektarho/react-accordion)"
-          echo "$BADGE_MARKDOWN" > coverage-badge.md
+          COVERAGE_BADGE_URL="https://img.shields.io/codecov/c/github/${{ github.repository }}/main"
+          echo "[![Codecov branch]($COVERAGE_BADGE_URL)]($COVERAGE_BADGE_URL)" >> coverage-badge.md
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          git add coverage-badge.md
+          git commit -m "Add Codecov coverage badge [skip ci]"
+          git push
         env:
-          COVERAGE_BADGE_URL: "https://img.shields.io/codecov/c/github/tarektarho/react-accordion/main"
+          COVERAGE_BADGE_URL: ${{ steps.generate-badge.outputs.coverage_badge_url }}
 
-      - name: Upload Badge Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: coverage-badge
-          path: coverage-badge.md
+      - name: Get badge URL
+        id: generate-badge
+        run: echo "::set-output name=coverage_badge_url::$(cat coverage-badge.md)"
