@@ -1,4 +1,4 @@
-[![Build and Test](https://github.com/tarektarho/react-accordion/actions/workflows/main.yml/badge.svg)](https://github.com/tarektarho/react-accordion/actions/workflows/main.yml) ![Codecov branch](https://img.shields.io/codecov/c/github/tarektarho/react-accordion/main)
+[![Build and Test](https://github.com/tarektarho/react-accordion/actions/workflows/main.yml/badge.svg)](https://github.com/tarektarho/react-accordion/actions/workflows/main.yml)
 
 # Accordion Vite App
 
