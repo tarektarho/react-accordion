@@ -43,6 +43,11 @@ jobs:
       - name: npm install
         run: npm ci
 
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
       - name: Generate Codecov badge
         run: |
           COVERAGE_BADGE_URL="https://img.shields.io/codecov/c/github/${{ github.repository }}/main"
@@ -50,10 +55,10 @@ jobs:
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           git add coverage-badge.md
-          git commit -m "Add Codecov coverage badge [skip ci]"
+          git commit -m "Add Codecov coverage badge [add coverage-badge.md]"
           git push
         env:
-          COVERAGE_BADGE_URL: ${{ steps.generate-badge.outputs.coverage_badge_url }}
+          COVERAGE_BADGE_URL: "https://img.shields.io/codecov/c/github/tarektarho/react-accordion/main"
 
       - name: Get badge URL
         id: generate-badge
