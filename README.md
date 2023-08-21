@@ -3,7 +3,7 @@
 An interactive accordion app built using React and Vite.
 
 ### Demo: https://tarek-accordion.netlify.app/
-<img width="963" alt="Screenshot 2023-08-21 at 15 39 50" src="https://github.com/tarektarho/react-accordion/assets/18512695/d41e4808-bdab-4b65-9115-f94bf2ae3959">
+<img width="987" alt="Screenshot 2023-08-21 at 15 54 03" src="https://user-images.githubusercontent.com/18512695/262044897-6ed2711b-0edf-409c-b1f3-23dc79492795.png">
 
 
 ## Table of Contents
@@ -63,7 +63,7 @@ The following scripts are available:
 
 
 ## Test Coverage
-<img width="649" alt="Screenshot 2023-08-21 at 10 46 31" src="https://github.com/tarektarho/react-accordion/assets/18512695/f7c8b236-aeb9-460a-aae7-530f08cfb350">
+<img width="649" alt="Screenshot 2023-08-21 at 10 46 31" src="https://user-images.githubusercontent.com/18512695/262044674-43810c46-f6d4-4851-aa0d-23770ef2ca8f.png">
 
 ## Dependencies
 
